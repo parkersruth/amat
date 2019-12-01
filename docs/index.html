@@ -1,0 +1,1083 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.2" />
+<title>amat API documentation</title>
+<meta name="description" content="Apple Messages Analytics Toolbox …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>amat</code></h1>
+</header>
+<section id="section-intro">
+<p>Apple Messages Analytics Toolbox</p>
+<h2 id="dataframe-fields">DataFrame Fields</h2>
+<p>Each row of the DataFrame corresponds to an individual message. The DataFrame
+contains the same columns as the original Apple Messages SQLite database, in
+addition to some added columns for convenience. Below is a selection of
+particularly useful fields.</p>
+<ul>
+<li><code>chat_id</code> - a unique ID for each chat dialogue</li>
+<li><code>contact</code> - the display name listed in the chat ID map file</li>
+<li><code>date_utc</code> - a datetime object for the send date/time of the message in UTC</li>
+<li><code>date_local</code> - a datetime object for the send date/time of the message in the local timezone</li>
+<li><code>weekday</code> - the day of the week the message was sent (0 = Mon, 1 = Tue, &hellip;, 6 = Sun)</li>
+<li><code>hour</code> - the hour of the day the message was sent (military time)</li>
+<li><code>timestamp</code> - a human-readable timestamp of when the message was sent in the local timezone</li>
+<li><code>length</code> - the total number of characters in the message</li>
+<li><code>is_from_me</code> - 0 if I sent this message, 1 if I received it from someone else</li>
+<li><code>ioicon</code> - 💬 if I sent this message, 📢 if I received it from someone else</li>
+</ul>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+Apple Messages Analytics Toolbox
+
+## DataFrame Fields
+
+Each row of the DataFrame corresponds to an individual message. The DataFrame
+contains the same columns as the original Apple Messages SQLite database, in
+addition to some added columns for convenience. Below is a selection of
+particularly useful fields.
+
+- `chat_id` - a unique ID for each chat dialogue
+- `contact` - the display name listed in the chat ID map file
+- `date_utc` - a datetime object for the send date/time of the message in UTC
+- `date_local` - a datetime object for the send date/time of the message in the local timezone
+- `weekday` - the day of the week the message was sent (0 = Mon, 1 = Tue, ..., 6 = Sun)
+- `hour` - the hour of the day the message was sent (military time)
+- `timestamp` - a human-readable timestamp of when the message was sent in the local timezone
+- `length` - the total number of characters in the message
+- `is_from_me` - 0 if I sent this message, 1 if I received it from someone else
+- `ioicon` - 💬 if I sent this message, 📢 if I received it from someone else
+
+&#34;&#34;&#34;
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import yaml
+from dateutil.parser import parse
+import textwrap as tw
+import re
+
+
+def load_data(data_file, id_file=None, tz=&#39;Etc/UTC&#39;):
+    &#34;&#34;&#34;Loads chat data from pickled DataFrame, optionally adds chat ID mapping,
+    and optionally configures the local timezone.
+
+    Args:
+        data_file: the file path of a pickled DataFrame
+        id_file: the file path of a YAML id map. Any chat IDs not mapped in the
+            YAML file default to &#34;other&#34;.
+        tz: the local timezone (see full list [here](https://stackoverflow.com/q/13866926))
+
+    Returns:
+        df: A pandas DataFrame object containing the Messages data
+
+    Example:
+        ```python
+        df = load_data(&#34;chat_df.pkl&#34;, &#34;id_map.yaml&#34;, &#34;US/Pacific&#34;)
+        ```
+    &#34;&#34;&#34;
+
+    try:
+        df = pd.read_pickle(data_file)
+    except:
+        print(&#34;Couldn&#39;t open&#34;, data_file, &#34;as pickled pandas DataFrame&#34;)
+
+    df[&#39;date_local&#39;] = df[&#39;date_utc&#39;].dt.tz_localize(&#39;utc&#39;).dt.tz_convert(tz).dt.tz_localize(None)
+    df[&#39;timestamp&#39;] = df[&#39;date_local&#39;].dt.strftime(&#39;%Y.%m.%d %r&#39;)
+
+    weekdays = df[&#39;date_local&#39;].apply(lambda x: x.weekday())
+    hours = df[&#39;date_local&#39;].apply(lambda x: x.hour)
+    df = df.assign(weekday = weekdays)
+    df = df.assign(hour = hours)
+
+    if id_file is None:
+        return df
+
+    try:
+        with open(id_file, &#39;r&#39;) as stream:
+            id_map = yaml.safe_load(stream)
+    except:
+        print(&#34;Couldn&#39;t open&#34;, id_file, &#34;as YAML file&#34;)
+
+    df[&#39;contact&#39;] = df.apply(lambda x: id_map.get(x[&#39;chat_id&#39;], &#39;other&#39;), axis=1)
+    return df
+
+
+def filt_date(df, start=&#39;Jan 1, 1900&#39;, end=&#39;Jan 1, 2200&#39;):
+    &#34;&#34;&#34;Filters only the messages between the given dates.
+
+    Args:
+        df: a chat DataFrame
+        start: the start date as a human-readable string (defaults to 1/1/1900)
+        end: the end date as a human-readable string (defaults to 1/1/2200)
+
+    Returns:
+        df: filtered chat DataFrame
+
+    Example:
+        ```python
+        new_texts = filt_date(df, start=&#34;Jan 1, 2019&#34;)
+        old_texts = filt_date(df, end=&#34;July 7, 2018&#34;)
+        summer = filt_date(df, start=&#34;Jun 21, 2019&#34;, end=&#34;Sept 23, 2019&#34;)
+        ```
+    &#34;&#34;&#34;
+
+    return df[(df[&#39;date_local&#39;] &gt; parse(start)) &amp; (df[&#39;date_local&#39;] &lt; parse(end))]
+
+
+def filt_any(df, by, *vals):
+    &#34;&#34;&#34;Filters messages with the given field equal to any of the given vals.
+
+    Args:
+        df: a chat DataFrame
+        by: the DataFrame field to filter by
+        *vals: variable length args for allowable values
+
+    Returns:
+        df: filtered chat DataFrame
+
+    Example:
+        ```python
+        from_mom = filt_any(df, &#39;contact&#39;, &#39;Mom&#39;)
+        from_parents = filt_any(df, &#39;contact&#39;, &#39;Mom&#39;, &#39;Dad&#39;, &#39;Mom and Dad&#39;)
+        ```
+    &#34;&#34;&#34;
+
+    return df[df[by].isin(vals)]
+
+
+def filt_func(df, by, func):
+    &#34;&#34;&#34;Filters messages where the given field are mapped by True by the given
+    function.
+
+    Args:
+        df: a chat DataFrame
+        by: the DataFrame field to filter by
+        func: a function mapping values to booleans
+
+    Returns:
+        df: filtered chat DataFrame
+
+    Example:
+        ```python
+        def selector(weekday):
+            if weekday in (0, 2, 4):
+                return True
+            else:
+                return False
+        mwf = filt_func(df, &#39;weekday&#39;, selector)
+        # returns all texts sent on Mondays, Wednesdays, and Fridays
+
+        frabjous = filt_func(df, &#39;text&#39;, lambda x: &#39;frabjous&#39; in x.lower())
+        # returns all texts containing the word frabjous (not case-sensitive)
+
+        from_parents = filt_func(df, &#39;contact&#39;, lambda x: &#39;Mom&#39; in x or &#39;Dad&#39; in x)
+        # equivalent to the following:
+        # from_parents = filt_any(df, &#39;contact&#39;, &#39;Mom&#39;, &#39;Dad&#39;, &#39;Mom and Dad&#39;)
+        ```
+    &#34;&#34;&#34;
+
+    return df[(df[by].apply(func))]
+
+
+def plot_count(df, freq, by=&#39;contact&#39;, **kwargs):
+    &#34;&#34;&#34;Plots the total number of messages over time
+
+    Args:
+        df: a chat DataFrame
+        freq: frequency bin size (see full list [here](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects))
+
+            - &#34;D&#34; to plot per day
+            - &#34;W&#34; to plot per week
+            - &#34;M&#34; to plot per month
+            - &#34;Y&#34; to plot per yearl
+            - &#34;3D&#34; for three days, &#34;6M&#34; for six months, etc.
+        by: field to group by (defaults to contact)
+        **kwargs: additional plotting configurations (see full list [here](https://pandas.pydata.org/pandas-docs/version/0.23/generated/pandas.DataFrame.plot.html))
+
+            - figsize: a tuple (width, height) in inches (default is 10 by 5)
+            - kind: &#34;line&#34; or &#34;area&#34; (defaults to &#34;area&#34;)
+            - stacked: boolean determining whether to stack lines/areas
+            - legend: boolean determining whether to displa a legend (defualts True)
+            - title: a string title for the plot (defaults None)
+            - cmap: a colormap object (see full list [here](https://matplotlib.org/3.1.0/tutorials/colors/colormaps.html))
+
+    Example:
+        ```python
+        plot_count(df, &#39;Y&#39;, legend=False)
+        # plots number of messages per year by contact
+
+        plot_count(df, &#39;M&#39;, by=&#39;weekday&#39;, kind=&#39;line&#39;, stacked=False, cmap=&#39;rainbow&#39;)
+        # plots number of messages per month by weekday as a rainbow line graph
+        ```
+    &#34;&#34;&#34;
+    df.groupby(by).resample(&#39;D&#39;, on=&#39;date_local&#39;).count() \
+        .unstack(level=0).resample(freq).sum() \
+        .plot(y=&#39;guid&#39;,
+              figsize=kwargs.pop(&#39;figsize&#39;, (15,5)),
+              kind=kwargs.pop(&#39;kind&#39;, &#39;area&#39;),
+              **kwargs)
+
+
+def plot_length(df, freq, by=&#39;contact&#39;, **kwargs):
+    &#34;&#34;&#34;Plots the net length of messages sent (total characters) over time&#34;
+
+    Args:
+        df: a chat DataFrame
+        freq: see `amat.plot_count`
+        by: field to group by (defaults to contact)
+        **kwargs: see `amat.plot_count`
+
+    Example:
+        ```python
+        plot_length(df, &#39;Y&#39;, legend=False)
+        # plots length of messages per year by contact
+
+        plot_length(df, &#39;M&#39;, by=&#39;weekday&#39;, kind=&#39;line&#39;, stacked=False, cmap=&#39;rainbow&#39;)
+        # plots length of messages per month by weekday as a rainbow line graph
+        ```
+    &#34;&#34;&#34;
+    df.groupby(by).resample(&#39;D&#39;, on=&#39;date_local&#39;).sum() \
+        .unstack(level=0).resample(freq).sum() \
+        .plot(y=&#39;length&#39;,
+              figsize=kwargs.pop(&#39;figsize&#39;, (15,5)),
+              kind=kwargs.pop(&#39;kind&#39;, &#39;area&#39;),
+              **kwargs)
+
+
+def breakdown(df, slivers=[2], by=&#39;contact&#39;, **kwargs):
+    &#34;&#34;&#34;Plots a pie chart breakdown with the given minimum sliver sizes
+
+    Args:
+        df: a chat DataFrame
+        slivers: an array of minimum slice sizes as percents. For example,
+            slivers=[3, 5] will plot two pie charts; the first will label any
+            slices less than 3% of the area as &#34;other&#34;, the second pie chart
+            will break down the other category, labeling any slices less than
+            5% of the remaining pie size as &#34;other&#34;
+        by: the field to group messages by
+        **kwargs: additional plotting configurations (see full list [here](https://pandas.pydata.org/pandas-docs/version/0.23/generated/pandas.DataFrame.plot.html))
+
+    Example:
+        ```python
+        breakdown(df)
+        # displays pie chart showing percentages of messages with each contact
+
+        breakdown(df, by=&#39;chat_id&#39;, slivers[2, 4, 3])
+        # displays pie chart breakdown by chat_id
+        ```
+    &#34;&#34;&#34;
+
+    totals = df.groupby(by).count().copy()
+    totals = totals[&#39;guid&#39;].reset_index()
+    total = totals[&#39;guid&#39;].sum()
+    totals[&#39;pcnt&#39;] = totals[&#39;guid&#39;].div(total).mul(100)
+    totals.sort_values(by=&#39;pcnt&#39;, inplace=True, ascending=False)
+
+
+    for i in range(len(slivers)):
+        k = kwargs.copy()
+        temp = totals.copy()
+        temp[by] = temp.apply(
+            lambda x: x[by] if x[&#39;pcnt&#39;] &gt; slivers[i] else &#39;other&#39;, axis=1)
+        temp = temp.groupby(by).sum()
+        ax = temp.plot.pie(y=&#39;pcnt&#39;,
+                legend=k.pop(&#39;legend&#39;, False),
+                figsize=k.pop(&#39;figsize&#39;, (6, 6)),
+                title=k.pop(&#39;title&#39;, &#34;total: &#34;+str(total)),
+                **k)
+        ax.set_ylabel(&#39;&#39;)
+
+        totals = totals[totals[&#39;pcnt&#39;] &lt; slivers[i]].copy()
+        if totals.size == 0:
+            break
+        total = totals[&#39;guid&#39;].sum()
+        totals[&#39;pcnt&#39;] = totals[&#39;guid&#39;].div(total).mul(100)
+
+
+def __highlight(string):
+    return &#39;\u001b[43m{}\u001b[0m&#39;.format(string)
+
+
+def __highlight_re(string, query, case=True):
+    if case:
+        pattern = re.compile(re.escape(query))
+    else:
+        pattern = re.compile(re.escape(query), re.IGNORECASE)
+    for match in re.finditer(pattern, string):
+        start, end = match.span()
+        string = string[:start] + __highlight(string[start:end]) + string[end:]
+    return string
+
+
+def search(df, query, case=False):
+    &#34;&#34;&#34;Filters messages containing the given string
+
+    Args:
+        df: a chat DataFrame
+        query: a string to search for
+        case: a boolean marking case sensitivity (defualts True)
+
+    Returns:
+        df: DataFrame of messages containing the given query
+
+    Example:
+        ```python
+        search(df, &#34;frabjous&#34;, True)
+        # returns messages containing frabjous (case-sensitive)
+        ```
+    &#34;&#34;&#34;
+    return df[df[&#39;text&#39;].str.contains(query, case=case)]
+
+
+def context_search(df, query, case=False, radius=5):
+    &#34;&#34;&#34;Prints messages containing the query, with some messages before and after
+
+    Args:
+        df: a chat DataFrame
+        query: a string to search for
+        case: a boolean marking case sensitivity (defualts True)
+        radiu: the number of messages to print before and after each result
+
+    Example:
+        ```python
+        search_context(df, &#34;frabjous&#34;, True, 3)
+        # prints messages containing &#34;frabjous&#34; with context radius of three
+        ```
+    &#34;&#34;&#34;
+    r = search(df, query, case)
+    for _, row in r.iterrows():
+        pal, date = row[&#39;contact&#39;], row[&#39;date_local&#39;]
+        chat = filt_any(df, &#39;contact&#39;, pal).reset_index()
+        i = chat.index[chat[&#39;date_local&#39;] == date].tolist()[0]
+        start, end = max(0, i-radius), min(chat.shape[0]-1, i+radius+1)
+        around = chat.iloc[start:end]
+        hltext = around[&#39;text&#39;].apply(lambda x: __highlight_re(x, query, case))
+        around = around.assign(hltext = hltext)
+        print(pal)
+        for _, line in around.iterrows():
+            text = &#39;{} {} {}&#39;.format(line[&#39;timestamp&#39;], line[&#39;ioicon&#39;], line[&#39;hltext&#39;])
+            print(tw.fill(text, width=90, initial_indent=&#39;&#39;, subsequent_indent=&#39; &#39;*27))
+        print()
+
+
+def weekly_heatmap(df, figsize=(15,10), **kwargs):
+    &#34;&#34;&#34;Displays a heatmap of message counts over days of the week
+
+    Args:
+        df: a chat DataFrame
+        figsize: a tuple (width, height) in inches (default is 10 by 5)
+        **kwargs: additional plotting configurations (see full list [here](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.imshow.html))
+
+    Example:
+        ```python
+        weekly_heatmap(df, cmap=&#34;Blues&#34;)
+        # displays a heatmap of weekly activity with blue colormap
+        ```
+    &#34;&#34;&#34;
+    timesheet = df.groupby([&#39;weekday&#39;, &#39;hour&#39;]).count()[&#39;guid&#39;].unstack(level=1)
+    heatmap = timesheet.reindex(np.arange(7)).reindex(np.arange(24), axis=1).fillna(0).to_numpy()
+
+    weekdaynames = [&#39;M&#39;, &#39;T&#39;, &#39;W&#39;, &#39;R&#39;, &#39;F&#39;, &#39;A&#39;, &#39;U&#39;]
+    hournames = [str(x) for x in range(25)]
+    hournames = [&#39;12am&#39;] + [str(x) + &#39;am&#39; for x in range(1, 13)] + [str(x) + &#39;pm&#39; for x in range(1, 13)]
+
+    heatmap = np.roll(heatmap, -4)
+    hournames = np.roll(np.array(hournames), -4)
+
+    fig, ax = plt.subplots(figsize=figsize)
+    plt.imshow(heatmap, cmap=kwargs.pop(&#39;cmap&#39;, &#39;viridis&#39;), **kwargs)
+
+    ax.set_yticks(np.arange(len(weekdaynames) + 1) - 0.5)
+    ax.set_xticks(np.arange(len(hournames)) - 0.5)
+    ax.set_yticklabels(weekdaynames)
+    ax.set_xticklabels(hournames)
+    ax.grid()
+
+    plt.show()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="amat.load_data"><code class="name flex">
+<span>def <span class="ident">load_data</span></span>(<span>data_file, id_file=None, tz='Etc/UTC')</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Loads chat data from pickled DataFrame, optionally adds chat ID mapping,
+and optionally configures the local timezone.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>data_file</code></strong></dt>
+<dd>the file path of a pickled DataFrame</dd>
+<dt><strong><code>id_file</code></strong></dt>
+<dd>the file path of a YAML id map. Any chat IDs not mapped in the
+YAML file default to "other".</dd>
+<dt><strong><code>tz</code></strong></dt>
+<dd>the local timezone (see full list <a href="https://stackoverflow.com/q/13866926">here</a>)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>df</code></strong></dt>
+<dd>A pandas DataFrame object containing the Messages data</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="python">df = load_data(&quot;chat_df.pkl&quot;, &quot;id_map.yaml&quot;, &quot;US/Pacific&quot;)
+</code></pre></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def load_data(data_file, id_file=None, tz=&#39;Etc/UTC&#39;):
+    &#34;&#34;&#34;Loads chat data from pickled DataFrame, optionally adds chat ID mapping,
+    and optionally configures the local timezone.
+
+    Args:
+        data_file: the file path of a pickled DataFrame
+        id_file: the file path of a YAML id map. Any chat IDs not mapped in the
+            YAML file default to &#34;other&#34;.
+        tz: the local timezone (see full list [here](https://stackoverflow.com/q/13866926))
+
+    Returns:
+        df: A pandas DataFrame object containing the Messages data
+
+    Example:
+        ```python
+        df = load_data(&#34;chat_df.pkl&#34;, &#34;id_map.yaml&#34;, &#34;US/Pacific&#34;)
+        ```
+    &#34;&#34;&#34;
+
+    try:
+        df = pd.read_pickle(data_file)
+    except:
+        print(&#34;Couldn&#39;t open&#34;, data_file, &#34;as pickled pandas DataFrame&#34;)
+
+    df[&#39;date_local&#39;] = df[&#39;date_utc&#39;].dt.tz_localize(&#39;utc&#39;).dt.tz_convert(tz).dt.tz_localize(None)
+    df[&#39;timestamp&#39;] = df[&#39;date_local&#39;].dt.strftime(&#39;%Y.%m.%d %r&#39;)
+
+    weekdays = df[&#39;date_local&#39;].apply(lambda x: x.weekday())
+    hours = df[&#39;date_local&#39;].apply(lambda x: x.hour)
+    df = df.assign(weekday = weekdays)
+    df = df.assign(hour = hours)
+
+    if id_file is None:
+        return df
+
+    try:
+        with open(id_file, &#39;r&#39;) as stream:
+            id_map = yaml.safe_load(stream)
+    except:
+        print(&#34;Couldn&#39;t open&#34;, id_file, &#34;as YAML file&#34;)
+
+    df[&#39;contact&#39;] = df.apply(lambda x: id_map.get(x[&#39;chat_id&#39;], &#39;other&#39;), axis=1)
+    return df</code></pre>
+</details>
+</dd>
+<dt id="amat.filt_date"><code class="name flex">
+<span>def <span class="ident">filt_date</span></span>(<span>df, start='Jan 1, 1900', end='Jan 1, 2200')</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Filters only the messages between the given dates.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>df</code></strong></dt>
+<dd>a chat DataFrame</dd>
+<dt><strong><code>start</code></strong></dt>
+<dd>the start date as a human-readable string (defaults to 1/1/1900)</dd>
+<dt><strong><code>end</code></strong></dt>
+<dd>the end date as a human-readable string (defaults to 1/1/2200)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>df</code></strong></dt>
+<dd>filtered chat DataFrame</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="python">new_texts = filt_date(df, start=&quot;Jan 1, 2019&quot;)
+old_texts = filt_date(df, end=&quot;July 7, 2018&quot;)
+summer = filt_date(df, start=&quot;Jun 21, 2019&quot;, end=&quot;Sept 23, 2019&quot;)
+</code></pre></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def filt_date(df, start=&#39;Jan 1, 1900&#39;, end=&#39;Jan 1, 2200&#39;):
+    &#34;&#34;&#34;Filters only the messages between the given dates.
+
+    Args:
+        df: a chat DataFrame
+        start: the start date as a human-readable string (defaults to 1/1/1900)
+        end: the end date as a human-readable string (defaults to 1/1/2200)
+
+    Returns:
+        df: filtered chat DataFrame
+
+    Example:
+        ```python
+        new_texts = filt_date(df, start=&#34;Jan 1, 2019&#34;)
+        old_texts = filt_date(df, end=&#34;July 7, 2018&#34;)
+        summer = filt_date(df, start=&#34;Jun 21, 2019&#34;, end=&#34;Sept 23, 2019&#34;)
+        ```
+    &#34;&#34;&#34;
+
+    return df[(df[&#39;date_local&#39;] &gt; parse(start)) &amp; (df[&#39;date_local&#39;] &lt; parse(end))]</code></pre>
+</details>
+</dd>
+<dt id="amat.filt_any"><code class="name flex">
+<span>def <span class="ident">filt_any</span></span>(<span>df, by, *vals)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Filters messages with the given field equal to any of the given vals.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>df</code></strong></dt>
+<dd>a chat DataFrame</dd>
+<dt><strong><code>by</code></strong></dt>
+<dd>the DataFrame field to filter by</dd>
+<dt><strong><code>*vals</code></strong></dt>
+<dd>variable length args for allowable values</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>df</code></strong></dt>
+<dd>filtered chat DataFrame</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="python">from_mom = filt_any(df, 'contact', 'Mom')
+from_parents = filt_any(df, 'contact', 'Mom', 'Dad', 'Mom and Dad')
+</code></pre></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def filt_any(df, by, *vals):
+    &#34;&#34;&#34;Filters messages with the given field equal to any of the given vals.
+
+    Args:
+        df: a chat DataFrame
+        by: the DataFrame field to filter by
+        *vals: variable length args for allowable values
+
+    Returns:
+        df: filtered chat DataFrame
+
+    Example:
+        ```python
+        from_mom = filt_any(df, &#39;contact&#39;, &#39;Mom&#39;)
+        from_parents = filt_any(df, &#39;contact&#39;, &#39;Mom&#39;, &#39;Dad&#39;, &#39;Mom and Dad&#39;)
+        ```
+    &#34;&#34;&#34;
+
+    return df[df[by].isin(vals)]</code></pre>
+</details>
+</dd>
+<dt id="amat.filt_func"><code class="name flex">
+<span>def <span class="ident">filt_func</span></span>(<span>df, by, func)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Filters messages where the given field are mapped by True by the given
+function.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>df</code></strong></dt>
+<dd>a chat DataFrame</dd>
+<dt><strong><code>by</code></strong></dt>
+<dd>the DataFrame field to filter by</dd>
+<dt><strong><code>func</code></strong></dt>
+<dd>a function mapping values to booleans</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>df</code></strong></dt>
+<dd>filtered chat DataFrame</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="python">def selector(weekday):
+    if weekday in (0, 2, 4):
+        return True
+    else:
+        return False
+mwf = filt_func(df, 'weekday', selector)
+# returns all texts sent on Mondays, Wednesdays, and Fridays
+
+frabjous = filt_func(df, 'text', lambda x: 'frabjous' in x.lower())
+# returns all texts containing the word frabjous (not case-sensitive)
+
+from_parents = filt_func(df, 'contact', lambda x: 'Mom' in x or 'Dad' in x)
+# equivalent to the following:
+# from_parents = filt_any(df, 'contact', 'Mom', 'Dad', 'Mom and Dad')
+</code></pre></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def filt_func(df, by, func):
+    &#34;&#34;&#34;Filters messages where the given field are mapped by True by the given
+    function.
+
+    Args:
+        df: a chat DataFrame
+        by: the DataFrame field to filter by
+        func: a function mapping values to booleans
+
+    Returns:
+        df: filtered chat DataFrame
+
+    Example:
+        ```python
+        def selector(weekday):
+            if weekday in (0, 2, 4):
+                return True
+            else:
+                return False
+        mwf = filt_func(df, &#39;weekday&#39;, selector)
+        # returns all texts sent on Mondays, Wednesdays, and Fridays
+
+        frabjous = filt_func(df, &#39;text&#39;, lambda x: &#39;frabjous&#39; in x.lower())
+        # returns all texts containing the word frabjous (not case-sensitive)
+
+        from_parents = filt_func(df, &#39;contact&#39;, lambda x: &#39;Mom&#39; in x or &#39;Dad&#39; in x)
+        # equivalent to the following:
+        # from_parents = filt_any(df, &#39;contact&#39;, &#39;Mom&#39;, &#39;Dad&#39;, &#39;Mom and Dad&#39;)
+        ```
+    &#34;&#34;&#34;
+
+    return df[(df[by].apply(func))]</code></pre>
+</details>
+</dd>
+<dt id="amat.plot_count"><code class="name flex">
+<span>def <span class="ident">plot_count</span></span>(<span>df, freq, by='contact', **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Plots the total number of messages over time</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>df</code></strong></dt>
+<dd>a chat DataFrame</dd>
+<dt><strong><code>freq</code></strong></dt>
+<dd>
+<p>frequency bin size (see full list <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects">here</a>)</p>
+<ul>
+<li>"D" to plot per day</li>
+<li>"W" to plot per week</li>
+<li>"M" to plot per month</li>
+<li>"Y" to plot per yearl</li>
+<li>"3D" for three days, "6M" for six months, etc.</li>
+</ul>
+</dd>
+<dt><strong><code>by</code></strong></dt>
+<dd>field to group by (defaults to contact)</dd>
+<dt><strong><code>**kwargs</code></strong></dt>
+<dd>
+<p>additional plotting configurations (see full list <a href="https://pandas.pydata.org/pandas-docs/version/0.23/generated/pandas.DataFrame.plot.html">here</a>)</p>
+<ul>
+<li>figsize: a tuple (width, height) in inches (default is 10 by 5)</li>
+<li>kind: "line" or "area" (defaults to "area")</li>
+<li>stacked: boolean determining whether to stack lines/areas</li>
+<li>legend: boolean determining whether to displa a legend (defualts True)</li>
+<li>title: a string title for the plot (defaults None)</li>
+<li>cmap: a colormap object (see full list <a href="https://matplotlib.org/3.1.0/tutorials/colors/colormaps.html">here</a>)</li>
+</ul>
+</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="python">plot_count(df, 'Y', legend=False)
+# plots number of messages per year by contact
+
+plot_count(df, 'M', by='weekday', kind='line', stacked=False, cmap='rainbow')
+# plots number of messages per month by weekday as a rainbow line graph
+</code></pre></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def plot_count(df, freq, by=&#39;contact&#39;, **kwargs):
+    &#34;&#34;&#34;Plots the total number of messages over time
+
+    Args:
+        df: a chat DataFrame
+        freq: frequency bin size (see full list [here](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects))
+
+            - &#34;D&#34; to plot per day
+            - &#34;W&#34; to plot per week
+            - &#34;M&#34; to plot per month
+            - &#34;Y&#34; to plot per yearl
+            - &#34;3D&#34; for three days, &#34;6M&#34; for six months, etc.
+        by: field to group by (defaults to contact)
+        **kwargs: additional plotting configurations (see full list [here](https://pandas.pydata.org/pandas-docs/version/0.23/generated/pandas.DataFrame.plot.html))
+
+            - figsize: a tuple (width, height) in inches (default is 10 by 5)
+            - kind: &#34;line&#34; or &#34;area&#34; (defaults to &#34;area&#34;)
+            - stacked: boolean determining whether to stack lines/areas
+            - legend: boolean determining whether to displa a legend (defualts True)
+            - title: a string title for the plot (defaults None)
+            - cmap: a colormap object (see full list [here](https://matplotlib.org/3.1.0/tutorials/colors/colormaps.html))
+
+    Example:
+        ```python
+        plot_count(df, &#39;Y&#39;, legend=False)
+        # plots number of messages per year by contact
+
+        plot_count(df, &#39;M&#39;, by=&#39;weekday&#39;, kind=&#39;line&#39;, stacked=False, cmap=&#39;rainbow&#39;)
+        # plots number of messages per month by weekday as a rainbow line graph
+        ```
+    &#34;&#34;&#34;
+    df.groupby(by).resample(&#39;D&#39;, on=&#39;date_local&#39;).count() \
+        .unstack(level=0).resample(freq).sum() \
+        .plot(y=&#39;guid&#39;,
+              figsize=kwargs.pop(&#39;figsize&#39;, (15,5)),
+              kind=kwargs.pop(&#39;kind&#39;, &#39;area&#39;),
+              **kwargs)</code></pre>
+</details>
+</dd>
+<dt id="amat.plot_length"><code class="name flex">
+<span>def <span class="ident">plot_length</span></span>(<span>df, freq, by='contact', **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Plots the net length of messages sent (total characters) over time"</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>df</code></strong></dt>
+<dd>a chat DataFrame</dd>
+<dt><strong><code>freq</code></strong></dt>
+<dd>see <a title="amat.plot_count" href="#amat.plot_count"><code>plot_count()</code></a></dd>
+<dt><strong><code>by</code></strong></dt>
+<dd>field to group by (defaults to contact)</dd>
+<dt><strong><code>**kwargs</code></strong></dt>
+<dd>see <a title="amat.plot_count" href="#amat.plot_count"><code>plot_count()</code></a></dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="python">plot_length(df, 'Y', legend=False)
+# plots length of messages per year by contact
+
+plot_length(df, 'M', by='weekday', kind='line', stacked=False, cmap='rainbow')
+# plots length of messages per month by weekday as a rainbow line graph
+</code></pre></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def plot_length(df, freq, by=&#39;contact&#39;, **kwargs):
+    &#34;&#34;&#34;Plots the net length of messages sent (total characters) over time&#34;
+
+    Args:
+        df: a chat DataFrame
+        freq: see `amat.plot_count`
+        by: field to group by (defaults to contact)
+        **kwargs: see `amat.plot_count`
+
+    Example:
+        ```python
+        plot_length(df, &#39;Y&#39;, legend=False)
+        # plots length of messages per year by contact
+
+        plot_length(df, &#39;M&#39;, by=&#39;weekday&#39;, kind=&#39;line&#39;, stacked=False, cmap=&#39;rainbow&#39;)
+        # plots length of messages per month by weekday as a rainbow line graph
+        ```
+    &#34;&#34;&#34;
+    df.groupby(by).resample(&#39;D&#39;, on=&#39;date_local&#39;).sum() \
+        .unstack(level=0).resample(freq).sum() \
+        .plot(y=&#39;length&#39;,
+              figsize=kwargs.pop(&#39;figsize&#39;, (15,5)),
+              kind=kwargs.pop(&#39;kind&#39;, &#39;area&#39;),
+              **kwargs)</code></pre>
+</details>
+</dd>
+<dt id="amat.breakdown"><code class="name flex">
+<span>def <span class="ident">breakdown</span></span>(<span>df, slivers=[2], by='contact', **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Plots a pie chart breakdown with the given minimum sliver sizes</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>df</code></strong></dt>
+<dd>a chat DataFrame</dd>
+<dt><strong><code>slivers</code></strong></dt>
+<dd>an array of minimum slice sizes as percents. For example,
+slivers=[3, 5] will plot two pie charts; the first will label any
+slices less than 3% of the area as "other", the second pie chart
+will break down the other category, labeling any slices less than
+5% of the remaining pie size as "other"</dd>
+<dt><strong><code>by</code></strong></dt>
+<dd>the field to group messages by</dd>
+<dt><strong><code>**kwargs</code></strong></dt>
+<dd>additional plotting configurations (see full list <a href="https://pandas.pydata.org/pandas-docs/version/0.23/generated/pandas.DataFrame.plot.html">here</a>)</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="python">breakdown(df)
+# displays pie chart showing percentages of messages with each contact
+
+breakdown(df, by='chat_id', slivers[2, 4, 3])
+# displays pie chart breakdown by chat_id
+</code></pre></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def breakdown(df, slivers=[2], by=&#39;contact&#39;, **kwargs):
+    &#34;&#34;&#34;Plots a pie chart breakdown with the given minimum sliver sizes
+
+    Args:
+        df: a chat DataFrame
+        slivers: an array of minimum slice sizes as percents. For example,
+            slivers=[3, 5] will plot two pie charts; the first will label any
+            slices less than 3% of the area as &#34;other&#34;, the second pie chart
+            will break down the other category, labeling any slices less than
+            5% of the remaining pie size as &#34;other&#34;
+        by: the field to group messages by
+        **kwargs: additional plotting configurations (see full list [here](https://pandas.pydata.org/pandas-docs/version/0.23/generated/pandas.DataFrame.plot.html))
+
+    Example:
+        ```python
+        breakdown(df)
+        # displays pie chart showing percentages of messages with each contact
+
+        breakdown(df, by=&#39;chat_id&#39;, slivers[2, 4, 3])
+        # displays pie chart breakdown by chat_id
+        ```
+    &#34;&#34;&#34;
+
+    totals = df.groupby(by).count().copy()
+    totals = totals[&#39;guid&#39;].reset_index()
+    total = totals[&#39;guid&#39;].sum()
+    totals[&#39;pcnt&#39;] = totals[&#39;guid&#39;].div(total).mul(100)
+    totals.sort_values(by=&#39;pcnt&#39;, inplace=True, ascending=False)
+
+
+    for i in range(len(slivers)):
+        k = kwargs.copy()
+        temp = totals.copy()
+        temp[by] = temp.apply(
+            lambda x: x[by] if x[&#39;pcnt&#39;] &gt; slivers[i] else &#39;other&#39;, axis=1)
+        temp = temp.groupby(by).sum()
+        ax = temp.plot.pie(y=&#39;pcnt&#39;,
+                legend=k.pop(&#39;legend&#39;, False),
+                figsize=k.pop(&#39;figsize&#39;, (6, 6)),
+                title=k.pop(&#39;title&#39;, &#34;total: &#34;+str(total)),
+                **k)
+        ax.set_ylabel(&#39;&#39;)
+
+        totals = totals[totals[&#39;pcnt&#39;] &lt; slivers[i]].copy()
+        if totals.size == 0:
+            break
+        total = totals[&#39;guid&#39;].sum()
+        totals[&#39;pcnt&#39;] = totals[&#39;guid&#39;].div(total).mul(100)</code></pre>
+</details>
+</dd>
+<dt id="amat.search"><code class="name flex">
+<span>def <span class="ident">search</span></span>(<span>df, query, case=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Filters messages containing the given string</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>df</code></strong></dt>
+<dd>a chat DataFrame</dd>
+<dt><strong><code>query</code></strong></dt>
+<dd>a string to search for</dd>
+<dt><strong><code>case</code></strong></dt>
+<dd>a boolean marking case sensitivity (defualts True)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>df</code></strong></dt>
+<dd>DataFrame of messages containing the given query</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="python">search(df, &quot;frabjous&quot;, True)
+# returns messages containing frabjous (case-sensitive)
+</code></pre></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def search(df, query, case=False):
+    &#34;&#34;&#34;Filters messages containing the given string
+
+    Args:
+        df: a chat DataFrame
+        query: a string to search for
+        case: a boolean marking case sensitivity (defualts True)
+
+    Returns:
+        df: DataFrame of messages containing the given query
+
+    Example:
+        ```python
+        search(df, &#34;frabjous&#34;, True)
+        # returns messages containing frabjous (case-sensitive)
+        ```
+    &#34;&#34;&#34;
+    return df[df[&#39;text&#39;].str.contains(query, case=case)]</code></pre>
+</details>
+</dd>
+<dt id="amat.context_search"><code class="name flex">
+<span>def <span class="ident">context_search</span></span>(<span>df, query, case=False, radius=5)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Prints messages containing the query, with some messages before and after</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>df</code></strong></dt>
+<dd>a chat DataFrame</dd>
+<dt><strong><code>query</code></strong></dt>
+<dd>a string to search for</dd>
+<dt><strong><code>case</code></strong></dt>
+<dd>a boolean marking case sensitivity (defualts True)</dd>
+<dt><strong><code>radiu</code></strong></dt>
+<dd>the number of messages to print before and after each result</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="python">search_context(df, &quot;frabjous&quot;, True, 3)
+# prints messages containing &quot;frabjous&quot; with context radius of three
+</code></pre></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def context_search(df, query, case=False, radius=5):
+    &#34;&#34;&#34;Prints messages containing the query, with some messages before and after
+
+    Args:
+        df: a chat DataFrame
+        query: a string to search for
+        case: a boolean marking case sensitivity (defualts True)
+        radiu: the number of messages to print before and after each result
+
+    Example:
+        ```python
+        search_context(df, &#34;frabjous&#34;, True, 3)
+        # prints messages containing &#34;frabjous&#34; with context radius of three
+        ```
+    &#34;&#34;&#34;
+    r = search(df, query, case)
+    for _, row in r.iterrows():
+        pal, date = row[&#39;contact&#39;], row[&#39;date_local&#39;]
+        chat = filt_any(df, &#39;contact&#39;, pal).reset_index()
+        i = chat.index[chat[&#39;date_local&#39;] == date].tolist()[0]
+        start, end = max(0, i-radius), min(chat.shape[0]-1, i+radius+1)
+        around = chat.iloc[start:end]
+        hltext = around[&#39;text&#39;].apply(lambda x: __highlight_re(x, query, case))
+        around = around.assign(hltext = hltext)
+        print(pal)
+        for _, line in around.iterrows():
+            text = &#39;{} {} {}&#39;.format(line[&#39;timestamp&#39;], line[&#39;ioicon&#39;], line[&#39;hltext&#39;])
+            print(tw.fill(text, width=90, initial_indent=&#39;&#39;, subsequent_indent=&#39; &#39;*27))
+        print()</code></pre>
+</details>
+</dd>
+<dt id="amat.weekly_heatmap"><code class="name flex">
+<span>def <span class="ident">weekly_heatmap</span></span>(<span>df, figsize=(15, 10), **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Displays a heatmap of message counts over days of the week</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>df</code></strong></dt>
+<dd>a chat DataFrame</dd>
+<dt><strong><code>figsize</code></strong></dt>
+<dd>a tuple (width, height) in inches (default is 10 by 5)</dd>
+<dt><strong><code>**kwargs</code></strong></dt>
+<dd>additional plotting configurations (see full list <a href="https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.imshow.html">here</a>)</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="python">weekly_heatmap(df, cmap=&quot;Blues&quot;)
+# displays a heatmap of weekly activity with blue colormap
+</code></pre></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def weekly_heatmap(df, figsize=(15,10), **kwargs):
+    &#34;&#34;&#34;Displays a heatmap of message counts over days of the week
+
+    Args:
+        df: a chat DataFrame
+        figsize: a tuple (width, height) in inches (default is 10 by 5)
+        **kwargs: additional plotting configurations (see full list [here](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.imshow.html))
+
+    Example:
+        ```python
+        weekly_heatmap(df, cmap=&#34;Blues&#34;)
+        # displays a heatmap of weekly activity with blue colormap
+        ```
+    &#34;&#34;&#34;
+    timesheet = df.groupby([&#39;weekday&#39;, &#39;hour&#39;]).count()[&#39;guid&#39;].unstack(level=1)
+    heatmap = timesheet.reindex(np.arange(7)).reindex(np.arange(24), axis=1).fillna(0).to_numpy()
+
+    weekdaynames = [&#39;M&#39;, &#39;T&#39;, &#39;W&#39;, &#39;R&#39;, &#39;F&#39;, &#39;A&#39;, &#39;U&#39;]
+    hournames = [str(x) for x in range(25)]
+    hournames = [&#39;12am&#39;] + [str(x) + &#39;am&#39; for x in range(1, 13)] + [str(x) + &#39;pm&#39; for x in range(1, 13)]
+
+    heatmap = np.roll(heatmap, -4)
+    hournames = np.roll(np.array(hournames), -4)
+
+    fig, ax = plt.subplots(figsize=figsize)
+    plt.imshow(heatmap, cmap=kwargs.pop(&#39;cmap&#39;, &#39;viridis&#39;), **kwargs)
+
+    ax.set_yticks(np.arange(len(weekdaynames) + 1) - 0.5)
+    ax.set_xticks(np.arange(len(hournames)) - 0.5)
+    ax.set_yticklabels(weekdaynames)
+    ax.set_xticklabels(hournames)
+    ax.grid()
+
+    plt.show()</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul>
+<li><a href="#dataframe-fields">DataFrame Fields</a></li>
+</ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="two-column">
+<li><code><a title="amat.load_data" href="#amat.load_data">load_data</a></code></li>
+<li><code><a title="amat.filt_date" href="#amat.filt_date">filt_date</a></code></li>
+<li><code><a title="amat.filt_any" href="#amat.filt_any">filt_any</a></code></li>
+<li><code><a title="amat.filt_func" href="#amat.filt_func">filt_func</a></code></li>
+<li><code><a title="amat.plot_count" href="#amat.plot_count">plot_count</a></code></li>
+<li><code><a title="amat.plot_length" href="#amat.plot_length">plot_length</a></code></li>
+<li><code><a title="amat.breakdown" href="#amat.breakdown">breakdown</a></code></li>
+<li><code><a title="amat.search" href="#amat.search">search</a></code></li>
+<li><code><a title="amat.context_search" href="#amat.context_search">context_search</a></code></li>
+<li><code><a title="amat.weekly_heatmap" href="#amat.weekly_heatmap">weekly_heatmap</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.2</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

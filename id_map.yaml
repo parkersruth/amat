@@ -1,0 +1,45 @@
+# Write your mapping from chat ids to display names in this YAML file
+# find the chat id mappings from the previews in the output folder
+# chat_id: display name
+
+4: Mom & Wombat
+7: Wombat, Mom, and Dad
+14: Mom & Dad
+19: Emu
+26: Wombat & Dad
+28: Skunk
+29: Newfoundland
+30: Zoo
+32: Fox
+38: Zoo
+41: Zoo
+42: Zoo
+43: Zoo
+44: Zoo
+45: Zoo
+47: Zoo
+49: Emu
+54: Zoo
+72: Wombat
+74: Mom
+79: Lemur
+86: Dad
+87: Turkey
+91: Butterfly
+102: Zebra
+103: Elephant, Rabbit, Butterfly
+105: Panda
+106: Marmots
+107: Elephant, Rabbit, Butterfly
+108: Elephant, Rabbit, Butterfly
+110: Butterfly
+111: Rabbit
+112: Butterfly, Beetle
+113: Butterfly, Beetle
+114: Elephant
+115: Panda
+116: Panda
+124: Dad
+125: Dad
+126: Sun Bear
+128: Dad

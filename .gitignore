@@ -1,0 +1,10 @@
+__pychache__/
+
+*.DS_Store
+*.swp
+Makefile
+*.db
+*.pkl
+
+.ipynb_checkpoints/
+
