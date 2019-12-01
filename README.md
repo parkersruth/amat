@@ -62,3 +62,20 @@ As you continue to use the Messages application, new data will not automatically
 Full documetation is available [here](https://parkersruth.github.io/amat/)
 
 
+## Attribution
+
+This repository is released under an open source license and is free to use for commercial and non-commercial purposes with attribution. If you use this toolkit for academic research, please include the following citation and [send me an email](https://parkersruth.github.io) to let me know how it's being used!
+
+```
+@misc{parkersruth_amat,
+  author = {Ruth, Parker S.},
+  title = {Apple Messages Analytics Toolkit},
+  month = {Nov},
+  year = {2019},
+  publisher = {GitHub},
+  version = {1.0},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/parkersruth/amat}},
+  commit = {db741da173fcce2a492a2c22f7aaac47d7cde6b5}
+}
+```
